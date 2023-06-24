@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mark {
+  id: String!
+  name: String!
+  className: String!
+  mark: Int!
+  teacher: String!
+}
+
+type User {
+  id: String!
+  email: String!
+  password: String!
+  roles: [UserRole!]!
+}
+
+enum UserRole {
+  ADMIN
+  TEACHER1
+  STUDENT1
+  MANAGER
+}
+
+type LoginResponse {
+  access_token: String!
+  user: User!
+}
+
+type Query {
+  marks(markFilterInput: MarkFilterInput!): [Mark!]!
+  users: [User!]!
+  user(email: String!): User!
+}
+
+input MarkFilterInput {
+  name: String!
+  className: String!
+  teacher: String!
+  mark: String!
+}
+
+type Mutation {
+  login(loginUserInput: LoginUserInput!): LoginResponse!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
